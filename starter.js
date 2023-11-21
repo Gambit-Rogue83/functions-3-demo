@@ -3,6 +3,128 @@
 ////////////////////////////////////
 
 let numArr = [123, 48, 839, 55, 8, 7465]
+let strArr = ['Dodge', 'Dip', 'Duck', 'Dive', 'Dodge']
+
+numArr.forEach((num, index) => {
+    //this doesn't return anything. Just performs tasks.
+    if(num > 500) {
+        console.log("That is a large purchase...")
+    } else {
+        console.log("Cheapskate")
+    }
+})
+
+let newFilteredArray = strArr.filter((str, i, arr) => {
+    if(i === 3){
+        return false
+    }
+    else if(str.length > 3){
+        return true
+    } else if(str.includes('p')){
+        return true
+    }
+})
+
+console.log(newFilteredArray)
+
+let history = strArr.map((str, i, arr) =>{
+    return `I have the ${str} skill, watch me!`
+})
+
+console.log(history)
+
+
+let total = numArr.reduce((acc, cur) =>{
+    if(cur > 500){
+        return acc + cur
+    } else {
+        return acc
+    }
+}, 0)
+
+console.log(total)
+
+
+let employees = [
+    {
+        name:"Shaq",
+        salary: 250000,
+        isAdmin: false,
+        trinkets: ['Basketball', 'Mug', 'Shoes']
+    },
+    {
+        name:"Hugh Jackman",
+        salary: 400000,
+        isAdmin: false,
+        trinkets: ['Wolverine Claws', 'Top Hat', 'Les Miserables script']
+    },
+    {
+        name:"God",
+        salary: 900000000,
+        isAdmin: true,
+        trinkets: ['Earth', 'Mountains', 'Rivers', 'Caves', 'Humans', 'Creatures']
+    },
+    {
+        name:"Me",
+        salary: 80000,
+        isAdmin: false,
+        trinkets: ['Laptop', 'Board Games', 'Books', 'Chair' ]
+    },
+    {
+        name:"Child",
+        salary: 0,
+        isAdmin: false,
+        trinkets: ['Paw Patrol', 'Peter Pan Drawing', 'Spider-Man doll', 'Pikachu']
+    }
+]
+
+let departmenSalary = employees.reduce((acc, cur) => {
+    return acc + cur.salary
+}, 0)
+
+console.log(departmenSalary)
+
+let overpaidEmployees = employees.filter((emp, index, array) =>{
+    if(emp.salary > 400000){
+    return true
+    } else if(emp.trinkets.length > 3) {
+        return true
+    }
+})
+
+
+console.log(overpaidEmployees)
+
+overpaidEmployees.forEach((emp, index, arr) =>{
+    if(emp.salary > 400000 && emp.trinkets.length > 3) {
+        console.log(`${emp.name} is the creator and master of the whole earth`)
+    } else if(emp.salary > 80000){
+        console.log(`We suggest reducing ${emp.name}'s salary`)
+    } else if(emp.trinkets.length > 3){
+        console.log(`Make sure ${emp.name} keeps his collection tidy`)
+    }
+})
+
+
+const introduce = employees.map((emp, index, arr) =>{
+    if(emp.isAdmin){
+        return `Hi, my name is ${emp.name}, and I am above all`
+    } else {
+        return `Hi, I'm ${emp.name}, and I love God`
+    }
+})
+
+console.log(introduce)
+
+const discussion = employees
+.filter((emp, index, arr) =>{
+    return emp.trinkets.length > 3
+}).map((emp, index, arr) =>{
+    return `${emp.name} is sharing all about their ${emp.trinkets.length} belongings`
+})
+
+
+console.log(discussion)
 
 
 
@@ -65,7 +187,7 @@ const copyArrToSnakeCase = arr => {
 
 const colors = ['red', 'blue', 'yellow', 'green', 'orange']
 
-const mappedColors // = colors.map()
+// const mappedColors // = colors.map()
 
 /*
     Edit the formalGreeting function and use the built in .map method
@@ -93,7 +215,7 @@ const formalGreeting = names => {
 
 const places = ['Binghampton', 'Albany', 'New York', 'Ithaca', 'Auburn', 'Rochester', 'Buffalo']
 
-const placesThatStartWithA // = places.filter()
+// const placesThatStartWithA // = places.filter()
 
 
 /*
@@ -171,4 +293,4 @@ const expenses = [
     }
 ]
 
-const remaining // = expenses.reduce(//callback, //initial value)
+// const remaining // = expenses.reduce(//callback, //initial value)
