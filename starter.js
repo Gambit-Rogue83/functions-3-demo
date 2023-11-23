@@ -187,7 +187,11 @@ const copyArrToSnakeCase = arr => {
 
 const colors = ['red', 'blue', 'yellow', 'green', 'orange']
 
-// const mappedColors // = colors.map()
+const mappedColors = colors.map((colors, index) => {
+    return 'pink'
+})
+
+console.log(mappedColors)
 
 /*
     Edit the formalGreeting function and use the built in .map method
@@ -200,11 +204,14 @@ const colors = ['red', 'blue', 'yellow', 'green', 'orange']
 const formalNames = ['Bernard', 'Elizabeth', 'Conrad', 'Mary Margaret']
 
 const formalGreeting = names => {
-    // CODE HERE
+    return names.map(name => `Hello, ${name}`)
 }
 
 // Call formalGreeting passing in the formalNames array
 
+const greetings = formalGreeting(formalNames)
+
+console.log(greetings)
 
 //// FILTER ////
 
@@ -215,65 +222,59 @@ const formalGreeting = names => {
 
 const places = ['Binghampton', 'Albany', 'New York', 'Ithaca', 'Auburn', 'Rochester', 'Buffalo']
 
-// const placesThatStartWithA // = places.filter()
+
+const placesThatStartWithA = places.filter(place => place[0] === 'A')
+
+console.log(placesThatStartWithA)
 
 
 /*
-    Create a function called identifier that uses the filter higher order
-    array method to filter over the provided jobs array of objects
-
-    The function should return the object of the person with a job as a programmer
-
-    Make sure to use the arrow function in conjunction with the filter method
-
-    Your returned value should be a single object, not an array with one object inside of it
-
-    Use arrow functions and the filter method
+Create a function called identifier that uses the filter higher order array
+method to filter over the provided jobs array of objects. The function should
+return the object of the person with a job as a programmer Make sure to use
+the arrow function in conjunction with the filter method. Your returned value
+should be a single object, not an array with one object inside of it Use
+arrow functions and the filter method
 */
-
 // Do not edit the code below.
 let jobs = [
 	{ receptionist: "James" },
 	{ programmer: "Steve" },
 	{ designer: "Alicia" },
 ];
-
 // Do not edit the code above.
 
 // CODE HERE
 
-// call the function passing in the jobs array
+const identifier = jobs => {
+    const filtered = jobs.filter(obj => obj.programmer)
+    return filtered[0]
+}
 
+console.log(identifier(jobs))
 
 //// REDUCE ////
 
 /*
-    Edit the productOfArray function and use
-    the built in .reduce method to loop over the numbers parameter
-    and return the product of all the numbers in the array
-
-    Make sure to use arrow functions combined with the reduce method
+Edit the productOfArray function and use the built in .reduce method to
+loop over the numbers parameter and return the product of all the numbers
+in the array Make sure to use arrow functions combined with the reduce method
 */
 
 const numsToReduce = [43, 7, 24, 79, 290]
 
 const productOfArray = numbers => {
-    // Code here
+    const reduce = numbers.reduce((acc, cur) => acc + cur)
+    return reduce
 }
 
-// CODE HERE
-
-
-// call productOfArray passing in numsToReduce
+console.log(productOfArray(numsToReduce))
 
 
 /*
-    Pass a callback and an initial value to reduce
-    that will subtract all the expenses in the array
-    from the initial budget
-
-    This will allow us to see how much we have left
-    in the budget after these expenses
+Pass a callback and an initial value to reduce that will subtract all the
+expenses in the array from the initial budget This will allow us to see how
+much we have left in the budget after these expenses
 */
 
 const budget = 2000
@@ -293,4 +294,6 @@ const expenses = [
     }
 ]
 
-// const remaining // = expenses.reduce(//callback, //initial value)
+const remaining = expenses.reduce((a, c) => a - c.amount, budget) //initial value)
+
+console.log(remaining)
